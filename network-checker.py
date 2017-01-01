@@ -8,14 +8,13 @@ import time
 if __name__ == '__main__':
     minutes = 0
     message = '''
-    Peringatan!
     Koneksi terputus setelah online selama {} menit
     '''
 
     while(True):
-        response = os.system('ping -c 1 -W 2 www.google.co.id')
-        time.sleep(60)
-        minutes += 1
+        response = os.system('timeout 2 ping -c 1 www.google.co.id')
         if response != 0:
             os.system("notify-send -u 'critical' -i face-angry '" + message.format(minutes,) + "'")
             exit(1)
+        minutes += 1
+        time.sleep(60)

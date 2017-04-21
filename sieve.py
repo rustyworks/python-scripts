@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import argparse
+
 
 class Prime():
     '''
@@ -39,8 +41,20 @@ class Prime():
             numbers = [num for num in numbers if num % self.primes[-1] != 0]
 
 if __name__ == '__main__':
-    # TODO: Support argsparse
     # TODO: Optimize using cache because recursive is expensive
     # TODO: Try use flag instead of append
+
+    parser = argparse.ArgumentParser(description='Generate the primes')
+    parser.add_argument('--get', dest='get', type=int)
+    parser.add_argument('--find', dest='find_n', type=int)
+    parser.add_argument('--list', nargs='?', type=int)
+
+    args = parser.parse_args()
+
     prime = Prime()
-    print(prime.get(8888))
+    if args.get:
+        print(prime.get(args.get))
+    if args.find_n:
+        print(prime.find_n(args.find_n))
+    if args.list:
+        print(prime.primes[:args.list])

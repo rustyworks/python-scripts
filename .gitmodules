@@ -1,0 +1,3 @@
+[submodule "primes_pkl"]
+	path = primes_pkl
+	url = git@github.com:rustyworks/primes_pkl.git

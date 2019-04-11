@@ -2,7 +2,7 @@ import argparse
 import pickle
 
 
-FILE_LOCATION = 'primes.pkl'
+FILE_LOCATION = 'primes_pkl/primes.pkl'
 
 
 def load_primes():

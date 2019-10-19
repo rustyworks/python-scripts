@@ -1,8 +1,9 @@
-def flatten(_list):
-    if not _list:
-        return _list
+from functools import lru_cache
+
+def flatten(array):
+    all_types = list(map(lambda x: type(x) != list, array))
+    if all(all_types):
+        return array
     else:
-        if type(_list[0]) != list:
-            return [_list[0]] + flatten(_list[1:])
-        else:
-            return flatten(_list[0]) + flatten(_list[1:])
+        index = all_types.index(False)
+        return array[:index] + flatten(array[index]) + flatten(array[index+1:])
